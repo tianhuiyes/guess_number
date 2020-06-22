@@ -11,15 +11,25 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @RestController
 public class GameController {
+    private GameService gameService;
+
+    public GameController(GameService gameService){
+        this.gameService = gameService;
+    }
+
     @PostMapping("/game/guess_numbers")
     public Map<String,String> guess(@RequestBody Map<String,String> requestBody){
-        GameService gameService = new GameService(new GuessNumberGame(new AnswerGenerator()));
+
+        String number = requestBody.get("number");
+        String result = gameService.guess(number);
+
         Map<String,String> responseBody = new HashMap<>();
 
-        responseBody.put("input", requestBody.get("number"));
-        responseBody.put("result",gameService.guess(requestBody.get("number")));
+        responseBody.put("input", number);
+        responseBody.put("result",result);
 
         return responseBody;
     }
