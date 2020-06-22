@@ -9,7 +9,9 @@ public class GameCredits {
     public int getCredits() {
         int Credits = 0;
         if(GameStatus.SUCCEED.equals(gameStatus)){
-            Credits = 3;
+            Credits += 3;
+        }else if(GameStatus.FAILED.equals(gameStatus)){
+            Credits -= 3;
         }
         return Credits;
     }
