@@ -1,6 +1,7 @@
-package com.twschool.practice.domain;
+package com.twschool.practice.service;
 
 import com.twschool.practice.api.GameController;
+import com.twschool.practice.domain.GuessNumberGame;
 import com.twschool.practice.repository.GameRepository;
 import com.twschool.practice.service.GameService;
 import org.junit.Test;
