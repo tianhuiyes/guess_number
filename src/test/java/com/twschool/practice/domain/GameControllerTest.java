@@ -24,9 +24,9 @@ public class GameControllerTest {
     public void should_return_result_when_guess_number() throws Exception{
         this.mockMvc.perform(MockMvcRequestBuilders.post("/game/guess_numbers")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"number\":\"1 2 3 4\"}"))
+                .content("{\"number\":\"1 2 5 6\"}"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.input").value("1 2 3 4"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.input").value("1 2 5 6"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result").value("4A0B"));
     }
 }
