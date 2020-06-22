@@ -1,18 +1,26 @@
 package com.twschool.practice.domain;
 
+import java.util.List;
+
 public class GameCredits {
-    private GameStatus gameStatus;
-    public GameCredits(GameStatus gameStatus) {
-        this.gameStatus = gameStatus;
+    private List<GameStatus> gameStatusList;
+    public GameCredits(List<GameStatus> gameStatus) {
+        this.gameStatusList = gameStatus;
     }
 
     public int getCredits() {
         int Credits = 0;
-        if(GameStatus.SUCCEED.equals(gameStatus)){
-            Credits += 3;
-        }else if(GameStatus.FAILED.equals(gameStatus)){
-            Credits -= 3;
+        int continueWinTimes = 0;
+        for(int index = 0;index < gameStatusList.size();index++){
+            if(GameStatus.SUCCEED.equals(gameStatusList.get(index))){
+                Credits += 3;
+
+            }else{
+                Credits -=3;
+            }
         }
+
+        Credits += 2;
         return Credits;
     }
 }
